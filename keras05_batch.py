@@ -32,7 +32,8 @@ model.add(Dense(1))
 
 #3. 컴파일, 훈련
 model.compile(loss='mse', optimizer='adam')
-model.fit(x, y, epochs=100, batch_size=2)       # batch 단위의 데이터 : (목적) 성능 향상, 데이터 과적합 방지
+model.fit(x, y, epochs=100, batch_size=2)       # batch 단위의 데이터 : (목적) 훈련량 증가 -> 성능 향상, 데이터 과적합 방지
+                                                # batch_size의 default값 : 32            -> 최소 85점 이상의 성능
 
 #4. 평가, 예측
 # *** 목적 : 최소의 loss, 최적의 weight ***
