@@ -17,7 +17,7 @@ y = np.array([1, 2, 3, 4, 5, 6])    # numpy 형태로 만듦
 model = Sequential()                 # 연속적인 모델
 model.add(Dense(40, input_dim=1))    # dim = dimension(차원)
 #         Dense(output dimension, input_dim=차원의 수)                  hidden layer -> 최적의 depth값, node 개수는 알 수 없다
-model.add(Dense(90))                                                 # 1에서 있단 히든부분인 input_dim 생략
+model.add(Dense(90))                                                 # 1에서 있던 히든부분인 input_dim 생략
 model.add(Dense(10))
 model.add(Dense(30))
 model.add(Dense(10))
