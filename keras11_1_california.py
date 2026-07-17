@@ -4,12 +4,19 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score, root_mean_squared_error, mean_squared_error
 from sklearn.datasets import fetch_california_housing                                # 교육용 데이터 제공
 
+
 # 1. 데이터
 datasets = fetch_california_housing()
+
+# print(datasets)
+# print(datasets.DESCR)
+
 # print(datasets)
 # print(datasets.DESCR)                             # describe : 조사하다
-# # dataset : 행
-# # attribute : 열
+# # dataset : 행                                    # attribute : 열
+
+# feature의 목록
+
 print(datasets.feature_names)
 # ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms',
 #  'Population', 'AveOccup', 'Latitude', 'Longitude']
