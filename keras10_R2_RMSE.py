@@ -67,9 +67,11 @@ loss = model.evaluate(x_test, y_test)
 print("loss = ", loss)                          # loss =  7.451475620269775
                                                 # 어느정도의 오차가 있는 것이 정확
 
+# 원값과 예측값을 확인하고, 지표를 구한다
 y_predict = model.predict([x_test])             # 100번째 w를 이용해서 예측값 : wx+b
 print("y_test의 원값 : ", y_test)
 print("[x]의 예측값 :  ", y_predict)
+
 
 r2 = r2_score(y_test, y_predict)                # 모수, 예측값
 print("r2_score : ", r2)
