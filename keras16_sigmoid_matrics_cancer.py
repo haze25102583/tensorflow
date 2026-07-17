@@ -103,13 +103,16 @@ model.fit(x_train, y_train, epochs=128, batch_size=64,
           callbacks = [es])                   
 end_time = time.time()
 
-
+print("=========================")
 
 # 4. 평가, 예측
 loss = model.evaluate(x_test, y_test)           # binary_crossentropy 값 나옴
 print("loss = ", loss)                      
-y_predict = model.predict(x_test)
+y_predict = model.predict(x_test)               # 0과 1 **사이** -> sigmoid
+y_predict = np.round(y_predict)
 
-r2 = r2_score(y_test, y_predict)
-print("r2 score : ", r2)                    
-
+# print("x_test의 예측값 : ", y_predict)
+print("걸린 시간 : ", round(end_time-start_time, 2), "초")
+from sklearn.metrics import accuracy_score
+acc_score = accuracy_score(y_test, y_predict)
+print('accuracy_score : ', acc_score)
