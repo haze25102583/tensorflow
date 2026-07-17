@@ -45,7 +45,7 @@ model.add(Dense(1))
 
 # 3. 컴파일, 훈련
 model.compile(loss="mse", optimizer="adam")
-model.fit(x_train, y_train, epochs=127, batch_size=64)                   # batch_size default값 : 32
+model.fit(x_train, y_train, epochs=128, batch_size=64)                   # batch_size default값 : 32
 
 
 # 4. 평가, 예측
