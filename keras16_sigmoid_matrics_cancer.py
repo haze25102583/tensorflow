@@ -26,7 +26,7 @@ print(np.unique(y, return_counts=True))
 
 
 x_train, x_test, y_train, y_test = train_test_split(x, y,
-                                                    train_size=0.75,        # default
+                                                    train_size=0.75,         # default
                                                     shuffle=True,            # default
                                                     random_state=100,
                                                     )
@@ -50,10 +50,11 @@ model.compile(loss="binary_crossentropy", optimizer="adam",
               )
 
 es = EarlyStopping(
-    monitor='val_loss', 
-    mode = 'min',
+    monitor='val_loss',                 # loss, accuracy도 가능
+    mode = 'min',                       #       accuracy일 경우, mode = 'max'
+                                        # 'auto' -> min으로 해야할 지, max로 해야할 지 자동으로 정함
     patience=100,                
-    restore_best_weights=True,
+    restore_best_weights=True,          # 통상적으로, True가 더 성능이 좋으나 간혹 False가 성능 좋기도.. (<- hidden layer)
     )
 
 start_time = time.time()
@@ -72,5 +73,6 @@ y_predict = np.round(y_predict)
 
 # print("x_test의 예측값 : ", y_predict)
 print("걸린 시간 : ", round(end_time-start_time, 2), "초")
-acc_score = accuracy_score(y_test, y_predict)
+acc_score = accuracy_score(y_test, y_predict)   # accuracy_score() 함수 : (ValueError)Classfication can't handle a mix of
+                                                # binary and continous targets
 print('accuracy_score : ', acc_score)
