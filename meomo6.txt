@@ -1,0 +1,5 @@
+예측 모델
+1. 회귀
+2. 분류
+   2. 1. 이진 : binary_crossentropy, (마지막 레이어)sigmoid
+   2. 2. 다중
