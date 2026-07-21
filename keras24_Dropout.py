@@ -35,15 +35,13 @@ x_train, x_test, y_train, y_test = train_test_split(x, y,
 # 2. 모델 구성
 model = Sequential()
 model.add(Dense(10, activation='relu', input_shape=(8,)))
-model.add(Dropout(0.1))                                     # 10개의 노드중 10%를 노드에 쓰지 않음
 model.add(Dense(50, activation='relu'))
-model.add(Dropout(0.1))
 model.add(Dense(500, activation='relu'))
 model.add(Dropout(0.3))
 model.add(Dense(190, activation='relu'))
-model.add(Dropout(0.1))
 model.add(Dense(1, activation='linear'))                                 # linear(선형회귀식) : 그 값 그대로 쓰겠다
-
+# Dropout 했을 때, r2 score :  0.31814438104629517
+# 원래는 r2 score :  0.289742648601532
 
 # 3. 컴파일, 훈련
 model.compile(loss="mse", optimizer="adam")
