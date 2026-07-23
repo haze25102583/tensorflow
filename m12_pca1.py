@@ -6,21 +6,36 @@ from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 import time
 from xgboost import XGBClassifier
+from sklearn.decomposition import PCA
+# PCA : 요즘엔 CNN을 주로 사용해 차원 축소 개념으로만 쓴다. 희미한 이미지를 축소시켜 뚜렷하게 하는 것과 비슷.
 
 # 1. 데이터
 x, y = load_breast_cancer(return_X_y=True)
+
+pca = PCA(n_components=25)
+x = pca.fit_transform(x)
+print(x.shape)      # n_components=25 -> (569, 25)                  # 하이퍼 파라미터 튜닝
+                    # 컬럼이 많을 경우, 압축시켜 훈련시킨다
+                    # 성능은 좋아질 수도, 안 좋아질 수도 but 시간 단축 
+
+
+exit()
 x_train, x_test, y_train, y_test = train_test_split(
-    x, y, shuffle=True, random_state=333, train_size=0.95,         
+    x, y, shuffle=True, random_state=333, train_size=0.8,         
     stratify=y                      # y의 분류를 균형있게 자름
 )
-print(x_train.shape, x_test.shape)  # (540, 30) (29, 30)
-print(y_train.shape, y_test.shape)  # (540,) (29,)
+
+print(x_train.shape, x_test.shape)  # (455, 30) (114, 30)
+print(y_train.shape, y_test.shape)  # (455,) (114,)
+
+
+
 
 # 2. 모델
 parameters = {                          # key-value 형태. key -> 문자열 형태
-    'learning_rate':0.1,
-    'max_depth':6,
-    'n_estimators':200,
+    'learning_rate':0.5,
+    'max_depth':11,
+    'n_estimators':100,
 }
 model = XGBClassifier(**parameters)      # * : 리스트              ** : 딕셔너리
 
