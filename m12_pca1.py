@@ -59,4 +59,4 @@ print("model.score : ", model.score(x_test, y_test))
 
 y_predict = model.predict(x_test)
 print("acc_score : ", accuracy_score(y_test, y_predict))  # acc_score :  1.0
-print("걸린 시간 : ", round(end_time-start_time, 2), "초")  # 걸린 시간 :  0.14 초
+print("걸린 시간 : ", round(end_time-start_time, 2), "초")  # 걸린 시간 :  0.11 초
